@@ -1,0 +1,296 @@
+/*
+======================
+shared css
+======================
+*/
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Dosis", sans-serif;
+  font-size: 16px;
+  color: #1e4040;
+}
+
+header,
+footer {
+  background-color: #1e4040;
+  color: #71d99e;
+}
+
+a {
+  color: #71d99e;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+img {
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+}
+
+/*
+=======================
+main css grid
+=======================
+*/
+
+.outer-grid {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: 70px 1fr;
+  grid-template-columns: 90px 1fr;
+  grid-template-areas:
+    "outer-header   outer-header"
+    "inner-alias    inner-alias";
+}
+
+.outer-grid-expanded {
+  grid-template-areas:
+    "outer-header   outer-header"
+    "outer-nav      inner-alias";
+}
+
+header {
+  grid-area: outer-header;
+}
+
+nav {
+  grid-area: outer-nav;
+  border-right: 1px solid #000000;
+  opacity: 0.1rem;
+}
+
+.hide-nav {
+  display: none;
+}
+
+/*
+================================
+outer grid header styles
+================================
+*/
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.left-section i {
+  margin-right: 20px;
+}
+
+.left-section i:hover {
+  color: rgb(189, 233, 29);
+  transform: scale(1.1);
+}
+
+.right-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.header-link i {
+  font-size: 0.8rem;
+}
+
+/*
+==============
+nav-styles
+==============
+*/
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.nav-link:hover {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.nav-link a {
+  color: #1e4040;
+  text-decoration: none;
+}
+
+/*
+==============================
+css inner-grid styles
+==============================
+*/
+
+.inner-grid {
+  overflow-y: scroll;
+  display: grid;
+  grid-area: inner-alias;
+  grid-template-rows: 1fr auto 60px;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "alias-main   alias-main"
+    "alias-aside  alias-aside"
+    "alias-footer alias-footer";
+}
+
+main {
+  grid-area: alias-main;
+  background-color: #dedab6;
+  padding: 20px 5%;
+}
+
+/*
+===========================================
+aside styles
+===========================================
+*/
+
+aside {
+  grid-area: alias-aside;
+  background-color: #c3e0ce;
+  padding: 20px 5%;
+  border-top: 1px solid #000000;
+  opacity: 0.1rem;
+}
+
+footer {
+  grid-area: alias-footer;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/*
+================================
+breakpoints
+================================
+*/
+
+/*
+=============================================
+for devices larger than 576px
+=============================================
+*/
+@media (min-width: 576px) {
+  nav {
+    display: block !important;
+  }
+
+  .outer-grid {
+    grid-template-areas:
+      "outer-header   outer-header"
+      "outer-nav    inner-alias";
+  }
+
+  .fa-bars {
+    display: none;
+  }
+}
+
+/*
+=============================================
+for devices larger than 992px
+=============================================
+*/
+@media (min-width: 992px) {
+  .inner-grid {
+    grid-template-rows: 1fr 60px;
+    grid-template-columns: minmax(auto, 700px) 1fr;
+    grid-template-areas:
+      "alias-main   alias-aside"
+      "alias-footer alias-footer";
+  }
+
+  aside {
+    border-left: 1px solid #000000;
+    opacity: 0.1rem;
+  }
+}
+
+/*
+==========================================
+collage styles
+==========================================
+*/
+
+.collage {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr 40px 1fr 40px 1fr;
+  align-items: center;
+  max-width: 100%;
+  margin: 20px 20px;
+}
+
+.collage * {
+  grid-row: 1 / 2;
+}
+
+.collage-1 {
+  grid-column: 1 / 3;
+  z-index: 1;
+  transform: rotate(-5deg);
+}
+
+.collage-2 {
+  grid-column: 2 / 5;
+  z-index: 2;
+}
+
+.collage-3 {
+  grid-column: 4 / 6;
+  z-index: 1;
+  transform: rotate(5deg);
+}
+/*
+======================================================
+device larger than 1240px
+======================================================
+*/
+@media (min-width: 1240px) {
+  .outer-grid {
+    grid-template-columns: 1fr 950px 1fr;
+    grid-template-areas:
+      "outer-header outer-header outer-header"
+      "outer-nav    inner-alias  inner-alias";
+  }
+
+  .logo {
+    margin-left: 100px;
+  }
+
+  .right-section {
+    margin-right: 150px;
+  }
+}
